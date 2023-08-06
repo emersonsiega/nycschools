@@ -101,8 +101,56 @@
 				1053B823C486EA96C1C04BF0 /* Pods-NYCSchoolsTests.debug.xcconfig */,
 				6B5D5D17D5C5963CC085433F /* Pods-NYCSchoolsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		632F60122A7FD93000A1E4F0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				632F60152A7FD9F500A1E4F0 /* UI */,
+				632F60142A7FD96B00A1E4F0 /* Data */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		632F60132A7FD96500A1E4F0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		632F60142A7FD96B00A1E4F0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				632F60132A7FD96500A1E4F0 /* Networking */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		632F60152A7FD9F500A1E4F0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				632F60172A7FDA1D00A1E4F0 /* Views */,
+				632F60162A7FD9FE00A1E4F0 /* Controllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		632F60162A7FD9FE00A1E4F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63CE86182A7FCD2500BCE5A6 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		632F60172A7FDA1D00A1E4F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63CE861A2A7FCD2500BCE5A6 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		63CE86082A7FCD2400BCE5A6 = {
@@ -130,10 +178,9 @@
 		63CE86132A7FCD2500BCE5A6 /* NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				632F60122A7FD93000A1E4F0 /* App */,
 				63CE86142A7FCD2500BCE5A6 /* AppDelegate.swift */,
 				63CE86162A7FCD2500BCE5A6 /* SceneDelegate.swift */,
-				63CE86182A7FCD2500BCE5A6 /* ViewController.swift */,
-				63CE861A2A7FCD2500BCE5A6 /* Main.storyboard */,
 				63CE861D2A7FCD2700BCE5A6 /* Assets.xcassets */,
 				63CE861F2A7FCD2700BCE5A6 /* LaunchScreen.storyboard */,
 				63CE86222A7FCD2700BCE5A6 /* Info.plist */,
