@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632F601A2A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F60192A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift */; };
+		632F601C2A7FE0F900A1E4F0 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F601B2A7FE0F900A1E4F0 /* DataError.swift */; };
 		63CE86152A7FCD2500BCE5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86142A7FCD2500BCE5A6 /* AppDelegate.swift */; };
 		63CE86172A7FCD2500BCE5A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86162A7FCD2500BCE5A6 /* SceneDelegate.swift */; };
 		63CE86192A7FCD2500BCE5A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86182A7FCD2500BCE5A6 /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 		172CAF82C08D7213893E0A06 /* Pods-NYCSchools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYCSchools.release.xcconfig"; path = "Target Support Files/Pods-NYCSchools/Pods-NYCSchools.release.xcconfig"; sourceTree = "<group>"; };
 		2D57ED9259BF853C955813D1 /* Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig"; path = "Target Support Files/Pods-NYCSchools-NYCSchoolsUITests/Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42BDB2424ACFA9006F54BD53 /* Pods_NYCSchoolsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYCSchoolsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		632F60192A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDirectoryAPI.swift; sourceTree = "<group>"; };
+		632F601B2A7FE0F900A1E4F0 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		63CE86112A7FCD2500BCE5A6 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CE86142A7FCD2500BCE5A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CE86162A7FCD2500BCE5A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 		632F60132A7FD96500A1E4F0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				632F60192A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift */,
+				632F601B2A7FE0F900A1E4F0 /* DataError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -454,8 +460,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632F601C2A7FE0F900A1E4F0 /* DataError.swift in Sources */,
 				63CE86192A7FCD2500BCE5A6 /* ViewController.swift in Sources */,
 				63CE86152A7FCD2500BCE5A6 /* AppDelegate.swift in Sources */,
+				632F601A2A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift in Sources */,
 				63CE86172A7FCD2500BCE5A6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
