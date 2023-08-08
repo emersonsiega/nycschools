@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		632F601A2A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F60192A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift */; };
 		632F601C2A7FE0F900A1E4F0 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F601B2A7FE0F900A1E4F0 /* DataError.swift */; };
+		632F601F2A7FE28700A1E4F0 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F601E2A7FE28700A1E4F0 /* School.swift */; };
 		63CE86152A7FCD2500BCE5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86142A7FCD2500BCE5A6 /* AppDelegate.swift */; };
 		63CE86172A7FCD2500BCE5A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86162A7FCD2500BCE5A6 /* SceneDelegate.swift */; };
 		63CE86192A7FCD2500BCE5A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE86182A7FCD2500BCE5A6 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		42BDB2424ACFA9006F54BD53 /* Pods_NYCSchoolsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYCSchoolsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		632F60192A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDirectoryAPI.swift; sourceTree = "<group>"; };
 		632F601B2A7FE0F900A1E4F0 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
+		632F601E2A7FE28700A1E4F0 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		63CE86112A7FCD2500BCE5A6 /* NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSchools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CE86142A7FCD2500BCE5A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CE86162A7FCD2500BCE5A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		632F60142A7FD96B00A1E4F0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				632F601D2A7FE26600A1E4F0 /* Models */,
 				632F60132A7FD96500A1E4F0 /* Networking */,
 			);
 			path = Data;
@@ -157,6 +160,14 @@
 				63CE861A2A7FCD2500BCE5A6 /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		632F601D2A7FE26600A1E4F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				632F601E2A7FE28700A1E4F0 /* School.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		63CE86082A7FCD2400BCE5A6 = {
@@ -461,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				632F601C2A7FE0F900A1E4F0 /* DataError.swift in Sources */,
+				632F601F2A7FE28700A1E4F0 /* School.swift in Sources */,
 				63CE86192A7FCD2500BCE5A6 /* ViewController.swift in Sources */,
 				63CE86152A7FCD2500BCE5A6 /* AppDelegate.swift in Sources */,
 				632F601A2A7FDCCF00A1E4F0 /* SchoolDirectoryAPI.swift in Sources */,
