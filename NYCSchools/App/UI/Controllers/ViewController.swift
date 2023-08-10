@@ -14,7 +14,16 @@ class ViewController: UIViewController {
         
         
         let api: SchoolAPILogic = SchoolAPI()
-        api.getSchools()
+        api.getSchools { result in
+            switch result {
+            case .failure(let error):
+                print("Error retrieving schools: \(error.localizedDescription)")
+            case .success(let schools):
+                if let schools = schools {
+                    print("found \(schools.count) schools!")
+                }
+            }
+        }
     }
 
 

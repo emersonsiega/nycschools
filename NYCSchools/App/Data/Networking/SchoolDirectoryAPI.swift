@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import Alamofire
+
+/// Get schools default response type
+typealias SchoolListAPIResponse = (Swift.Result<[School]?, DataError>) -> Void
 
 protocol SchoolAPILogic {
     /// Get schools data from API
-    func getSchools()
+    func getSchools(completion: @escaping(SchoolListAPIResponse))
 }
 
 class SchoolAPI: SchoolAPILogic {
@@ -17,8 +21,19 @@ class SchoolAPI: SchoolAPILogic {
         static let schoolListUrl =  "https://data.cityofnewyork.us/resource/s3k6-pzi2.json?$$app_token=L1KwLSwm1yz1N7aWqFCF4dLmM"
     }
         
-    func getSchools() {
-        retrieveSchoolsUsingStandardServices()
+    func getSchools(completion: @escaping(SchoolListAPIResponse)) {
+        //retrieveSchoolsUsingStandardServices()
+     
+        AF.request(Constants.schoolListUrl)
+            .validate()
+            .responseDecodable(of: [School].self) { response in
+                switch response.result {
+                case .failure(let error):
+                    completion(.failure(.networkingError(error.localizedDescription)))
+                case .success(let schools):
+                    completion(.success(schools))
+                }
+            }
     }
     
     private func retrieveSchoolsUsingStandardServices() {
