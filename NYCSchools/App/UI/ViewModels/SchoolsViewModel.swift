@@ -6,26 +6,26 @@
 //
 
 import Foundation
+import Combine
 
 class SchoolsViewModel {
     private let apiService: SchoolAPILogic
     
-    private(set) var schools: [School] = []
-    private(set) var error: DataError? = nil
+    @Published private(set) var schools: [School] = []
+    @Published private(set) var error: DataError? = nil
     
     init(apiService: SchoolAPILogic = SchoolAPI()) {
         self.apiService = apiService
     }
     
-    func getSchools(completion: @escaping( ([School]?, DataError? ) -> Void )) {
+    func getSchools() {
         apiService.getSchools { [weak self] result in
             switch result {
             case .success(let schools):
                 self?.schools = schools ?? []
-                completion(schools, nil)
+            
             case .failure(let error):
                 self?.error = error
-                completion(nil, error)
             }
         }
     }
