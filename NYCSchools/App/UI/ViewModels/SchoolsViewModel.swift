@@ -8,10 +8,14 @@
 import Foundation
 
 class SchoolsViewModel {
-    private let apiService: SchoolAPILogic = SchoolAPI()
+    private let apiService: SchoolAPILogic
     
     private(set) var schools: [School] = []
     private(set) var error: DataError? = nil
+    
+    init(apiService: SchoolAPILogic = SchoolAPI()) {
+        self.apiService = apiService
+    }
     
     func getSchools(completion: @escaping( ([School]?, DataError? ) -> Void )) {
         apiService.getSchools { [weak self] result in
@@ -21,7 +25,7 @@ class SchoolsViewModel {
                 completion(schools, nil)
             case .failure(let error):
                 self?.error = error
-                completion([], error)
+                completion(nil, error)
             }
         }
     }
