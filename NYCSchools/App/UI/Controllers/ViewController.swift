@@ -17,6 +17,10 @@ class ViewController: UIViewController {
         
         setupBinders()
         schoolsViewModel.getSchools()
+        
+        //TODO: Remove!!
+        let title = "schools.title".localized()
+        print("localization usage example: \(title)")
     }
     
     private func setupBinders() {
