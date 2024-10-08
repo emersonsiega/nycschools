@@ -6,17 +6,16 @@
 //
 
 import XCTest
+import Combine
 @testable import NYCSchools
 
 final class NYCSchoolsTests: XCTestCase {
+    private var cancellables = Set<AnyCancellable>()
     
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func setUp() async throws {
+        try await super.setUp()
+        
+        cancellables.removeAll()
     }
 
     func testGettingSchoolsWithMockEmptyResult() throws {
@@ -26,10 +25,15 @@ final class NYCSchoolsTests: XCTestCase {
         mock.loadState = .empty
         
         let sut = SchoolsViewModel(apiService: mock)
-        sut.getSchools { schools, error in
-            XCTAssertTrue(schools?.isEmpty == true, "Expected schools to be empty, but received some values")
-            expectation.fulfill()
-        }
+        sut.getSchools()
+        
+        sut.$schools
+            .receive(on: RunLoop.main)
+            .sink{ schools in
+                XCTAssertTrue(schools.isEmpty == true, "Expected schools to be empty, but received some values")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         
         waitForExpectations(timeout: 1.0) { error in
             if let error = error {
@@ -45,11 +49,15 @@ final class NYCSchoolsTests: XCTestCase {
         mock.loadState = .error
         
         let sut = SchoolsViewModel(apiService: mock)
-        sut.getSchools { schools, error in
-            XCTAssertTrue(schools == nil, "Expected to get no schools and error, but received schools")
-            XCTAssertNotNil(error, "Expected tÏo get an error, but received no error")
-            expectation.fulfill()
-        }
+        sut.getSchools()
+                
+        sut.$error
+            .receive(on: RunLoop.main)
+            .sink { error in
+                XCTAssertNotNil(error, "Expected to get an error, but received no error")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         
         waitForExpectations(timeout: 1.0) { error in
             if let error = error {
@@ -65,11 +73,15 @@ final class NYCSchoolsTests: XCTestCase {
         mock.loadState = .loaded
         
         let sut = SchoolsViewModel(apiService: mock)
-        sut.getSchools { school, error in
-            XCTAssertNil(error, "Expected no errors, bug received some error")
-            XCTAssertTrue(school?.isEmpty == false, "Expected to receive schools, but received no schools")
-            expectation.fulfill()
-        }
+        sut.getSchools()
+        
+        sut.$schools
+            .receive(on: RunLoop.main)
+            .sink{ schools in
+                XCTAssertTrue(!schools.isEmpty, "Expected to receive schools, but received no schools")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         
         waitForExpectations(timeout: 1.0) { error in
             if let error = error {
@@ -77,12 +89,4 @@ final class NYCSchoolsTests: XCTestCase {
             }
         }
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
