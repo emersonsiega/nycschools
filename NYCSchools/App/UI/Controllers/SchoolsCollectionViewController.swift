@@ -37,8 +37,8 @@ class SchoolsCollectionViewController: UIViewController {
         let collectionViewlayout = UICollectionViewFlowLayout()
         collectionViewlayout.itemSize = CGSize(width: view.frame.size.width,
                                                height: Constants.cellHeight)
-        //        collectionViewlayout.headerReferenceSize = CGSize(width: view.frame.size.width,
-        //                                                          height: Contants.sectionHeight)
+        collectionViewlayout.headerReferenceSize = CGSize(width: view.frame.size.width,
+                                                          height: Constants.sectionHeight)
         collectionViewlayout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: view.frame,
                                           collectionViewLayout: collectionViewlayout)
@@ -55,6 +55,9 @@ class SchoolsCollectionViewController: UIViewController {
         // Setup and customize flow layout
         collectionView.register(SchoolCollectionViewCell.self,
                                 forCellWithReuseIdentifier: Constants.cellIdentifier)
+        collectionView.register(SchoolsSectionHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: Constants.sectionHeaderIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -93,21 +96,41 @@ class SchoolsCollectionViewController: UIViewController {
 
 extension SchoolsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return schoolsViewModel.schools.count
+        return schoolsViewModel.schoolSectionsList?[section].schools.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as? SchoolCollectionViewCell else {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Constants.cellIdentifier,
+            for: indexPath) as? SchoolCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let school = schoolsViewModel.schools[indexPath.item]
-        cell.populate(school)
+        if let schoolSection = schoolsViewModel.schoolSectionsList?[indexPath.section] {
+            let school = schoolSection.schools[indexPath.item]
+            cell.populate(school)
+        }
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader,
+           let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: Constants.sectionHeaderIdentifier,
+                for: indexPath) as? SchoolsSectionHeaderView  {
+            sectionHeader.headerLabel.text = schoolsViewModel.schoolSectionsList?[indexPath.section].city
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return schoolsViewModel.schoolSectionsList?.count ?? 1
     }
 }
 
