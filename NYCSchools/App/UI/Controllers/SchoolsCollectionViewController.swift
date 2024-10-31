@@ -135,6 +135,14 @@ extension SchoolsCollectionViewController: UICollectionViewDataSource {
 }
 
 extension SchoolsCollectionViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
+        if let school = schoolsViewModel.schoolSectionsList?[indexPath.section].schools[indexPath.item],
+           let schoolName = school.schoolName {
+            print("Item selected: \(schoolName)")
+        }
+        
+        print("Index selected: \(indexPath.section):\(indexPath.item)")
+    }
 }
 
