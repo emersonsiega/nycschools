@@ -7,3 +7,12 @@
 */
 
 "schools.title" = "Schools";
+
+// School details
+"school.details.section" = "School Details";
+"school.details.address.title" = "Address";
+"school.details.email.title" = "E-mail";
+"school.details.phone.title" = "Phone";
+"school.details.academicOpportunities.title" = "Academic opportunities";
+"school.details.grades.title" = "Grades";
+"school.details.website.title" = "Website";

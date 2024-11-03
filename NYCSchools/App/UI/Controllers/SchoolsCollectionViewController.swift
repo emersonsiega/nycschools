@@ -140,6 +140,11 @@ extension SchoolsCollectionViewController: UICollectionViewDelegate {
         if let school = schoolsViewModel.schoolSectionsList?[indexPath.section].schools[indexPath.item],
            let schoolName = school.schoolName {
             print("Item selected: \(schoolName)")
+            let detailsViewController = SchoolDetailsViewController()
+            detailsViewController.viewModel = SchoolDetailsViewModel(school: school)
+            // Other option
+            // present(detailsViewController, animated: true)
+            navigationController?.pushViewController(detailsViewController, animated: true)
         }
         
         print("Index selected: \(indexPath.section):\(indexPath.item)")
