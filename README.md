@@ -1,6 +1,6 @@
 # NYCSchools App
 
-New York City Schools app from Swift course
+New York City Schools app using Storyboard, from Swift course
 
 ## Data
 
